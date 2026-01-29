@@ -1,3 +1,3 @@
-project_id  = "learning-project-482611" #projectupdated
+project_id  = "learning-project-482611" #projectupdateds
 bucket_name = "bucket-1-2026"
 region      = "asia-south1"  # Mumbai region for India
