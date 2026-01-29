@@ -1,21 +1,26 @@
 steps:
-  # Install & init Terraform
+  # Init
   - name: 'hashicorp/terraform:1.9'
     id: terraform-init
     entrypoint: 'terraform'
     args: ['init']
   
-  # Plan (shows what will be created)
+  # Plan WITH tfvars
   - name: 'hashicorp/terraform:1.9'
     id: terraform-plan
     entrypoint: 'terraform'
-    args: ['plan']
-  
-  # CREATE BUCKET!
+    args: 
+      - 'plan'
+      - '-var-file=terraform.tfvars'     # ← THIS FIXES IT!
+
+  # Apply WITH tfvars  
   - name: 'hashicorp/terraform:1.9'
     id: terraform-apply
     entrypoint: 'terraform'
-    args: ['apply', '-auto-approve']
+    args:
+      - 'apply'
+      - '-var-file=terraform.tfvars'     # ← THIS TOO!
+      - '-auto-approve'
 
 options:
   logging: CLOUD_LOGGING_ONLY
