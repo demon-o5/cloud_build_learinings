@@ -6,7 +6,23 @@ terraform {
       version = "~> 5.0"
     }
   }
-  # NO BACKEND - Uses local state (perfect for learning!)
+}
+
+# ADD THESE MISSING VARIABLES:
+variable "project_id" {
+  description = "GCP Project ID"
+  type        = string
+}
+
+variable "app_bucket_name" {
+  description = "Application bucket name"
+  type        = string
+}
+
+variable "region" {
+  description = "GCP region"
+  type        = string
+  default     = "asia-south1"
 }
 
 provider "google" {
@@ -15,9 +31,9 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "app_bucket" {
-  name     = var.app_bucket_name
-  location = var.region
-  force_destroy = true  # Allows deletion during learning
+  name          = var.app_bucket_name
+  location      = var.region
+  force_destroy = true
   
   labels = {
     environment = "learning"
