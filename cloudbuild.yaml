@@ -11,3 +11,7 @@ steps:
     id: terraform-apply
     entrypoint: 'terraform'
     args: ['apply', 'tfplan']
+
+# ADD THIS SECTION:
+options:
+  logging: CLOUD_LOGGING_ONLY  # ✅ Fixes your error!
