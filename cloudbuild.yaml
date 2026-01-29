@@ -1,0 +1,13 @@
+steps:
+  - name: 'hashicorp/terraform:1.9'
+    id: terraform-init
+    entrypoint: 'terraform'
+    args: ['init']
+  - name: 'hashicorp/terraform:1.9'
+    id: terraform-plan
+    entrypoint: 'terraform'
+    args: ['plan', '-out=tfplan']
+  - name: 'hashicorp/terraform:1.9'
+    id: terraform-apply
+    entrypoint: 'terraform'
+    args: ['apply', 'tfplan']
